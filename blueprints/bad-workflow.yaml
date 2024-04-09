@@ -4,6 +4,7 @@ description: some workflow 2
 
 workflow-metadata:  
   label-selector: vm
+  scope: env_resource
   
 inputs:
   input1:
