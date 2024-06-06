@@ -9,7 +9,7 @@ environment:
 inputs:
   compute_service_name:
     type: agent
-    default: yakir-dev-eks-2
+    default: vido-review-3
  
   tf_input:
     type: string
