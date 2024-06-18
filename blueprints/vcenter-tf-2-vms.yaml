@@ -1,6 +1,6 @@
 spec_version: 2-preview
 
-description: test blueprint for deploying VMs on vcenteraaaaaaaaasadsadsadasd
+description: test bluep
 
 inputs:
   virtual_machine_template_name:
