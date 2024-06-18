@@ -1,6 +1,6 @@
 spec_version: 2-preview
 
-description: test asffsdfsdasd
+description: test 
 
 inputs:
   virtual_machine_template_name:
