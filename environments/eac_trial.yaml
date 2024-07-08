@@ -2,7 +2,7 @@ spec_version: 2-preview
  
  
 environment:
-  environment_name: my-eac-env
+  environment_name: my-eac-env1111
   description: eac env for testing  1
   owner_email: yakir.l@quali.com
   state: active 
