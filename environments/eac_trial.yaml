@@ -9,7 +9,7 @@ environment:
 inputs:
   compute_service_name:
     type: agent
-    default: vido-review-3
+    default: vido-preview-aks	
  
   tf_input:
     type: string
