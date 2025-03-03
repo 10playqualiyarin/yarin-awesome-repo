@@ -45,14 +45,12 @@
       "properties": {
         "type": {
           "type": "string",
-          "enum": ["resource", "output", "env_published"]
         },
         "name": {
           "type": "string"
         },
         "status": {
           "type": "string",
-          "enum": ["active", "offline"]
         },
         "attributes": {
           "type": "array",
