@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-06/schema#",
+  "$ref": "#/definitions/LayoutSchema",
+  "definitions": {
+    "LayoutSchema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": ["layout"]
+        },
+        "description": {
+          "type": "string"
+        },
+        "table": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "category": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/LayoutItem"
+                  }
+                }
+              },
+              "required": ["name", "items"]
+            }
+          }
+        }
+      },
+      "required": ["kind", "description"],
+      "title": "Layout Schema"
+    },
+    "LayoutItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["resource", "output", "env_published"]
+        },
+        "name": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["active", "offline"]
+        },
+        "attributes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LayoutAttribute"
+          }
+        }
+      },
+      "required": ["type", "name"]
+    },
+    "LayoutAttribute": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": ["name", "value"]
+    }
+  }
+}
