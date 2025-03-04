@@ -17,21 +17,30 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
-            "category": {
-              "type": "object",
-              "additionalProperties": false,
-              "properties": {
-                "name": {
-                  "type": "string"
-                },
-                "items": {
-                  "type": "array",
+            "categories": {  // Changed from single "category" to array "categories"
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
                   "items": {
-                    "$ref": "#/definitions/LayoutItem"
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/definitions/LayoutItem"
+                    }
                   }
-                }
-              },
-              "required": ["name", "items"]
+                },
+                "required": ["name", "items"]
+              }
+            },
+            "items": {  // Added "items" to allow standalone items
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/LayoutItem"
+              }
             }
           }
         }
