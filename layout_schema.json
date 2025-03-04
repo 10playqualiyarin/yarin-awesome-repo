@@ -17,7 +17,7 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
-            "categories": {  // Changed from single "category" to array "categories"
+            "categories": {  
               "type": "array",
               "items": {
                 "type": "object",
@@ -36,7 +36,7 @@
                 "required": ["name", "items"]
               }
             },
-            "items": {  // Added "items" to allow standalone items
+            "items": {  
               "type": "array",
               "items": {
                 "$ref": "#/definitions/LayoutItem"
