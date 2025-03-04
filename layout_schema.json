@@ -17,7 +17,7 @@
           "type": "object",
           "additionalProperties": false,
           "properties": {
-            "categories": {  
+            "categories": {
               "type": "array",
               "items": {
                 "type": "object",
@@ -29,17 +29,29 @@
                   "items": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/definitions/LayoutItem"
+                      "type": "object",
+                      "properties": {
+                        "item": {
+                          "$ref": "#/definitions/LayoutItem"
+                        }
+                      },
+                      "required": ["item"]
                     }
                   }
                 },
                 "required": ["name", "items"]
               }
             },
-            "items": {  
+            "items": {
               "type": "array",
               "items": {
-                "$ref": "#/definitions/LayoutItem"
+                "type": "object",
+                "properties": {
+                  "item": {
+                    "$ref": "#/definitions/LayoutItem"
+                  }
+                },
+                "required": ["item"]
               }
             }
           }
