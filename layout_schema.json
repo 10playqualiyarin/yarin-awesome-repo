@@ -137,7 +137,11 @@
         "text": { "type": "string" },
         "tooltip": { "type": "string" }
       },
-      "required": ["value"]
+      "required": ["value"],
+      "anyOf": [
+        { "required": ["icon"] },
+        { "required": ["text"] }
+      ]
     }
   }
 }
