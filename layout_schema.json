@@ -74,27 +74,70 @@
           "type": "string",
           "enum": ["active", "offline"]
         },
+        "icon": {
+          "type": "string"
+        },
         "attributes": {
           "type": "array",
           "items": {
             "$ref": "#/definitions/LayoutAttribute"
-          }
+          },
+          "maxItems": 5
+        },
+        "actions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LayoutAction"
+          },
+          "maxItems": 3
         }
       },
-      "required": ["type", "name"]
+      "required": ["type", "name"],
+      "allOf": [
+        {
+          "if": {
+            "properties": { "type": { "const": "output" } }
+          },
+          "then": {
+            "properties": {
+              "status": { "not": {} }, 
+              "attributes": { "maxItems": 5 }
+            }
+          },
+          "else": {
+            "properties": {
+              "status": { "type": "string", "enum": ["active", "offline"] }
+            }
+          }
+        }
+      ]
     },
     "LayoutAttribute": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "name": { "type": "string" },
+            "value": { "type": "string" }
+          },
+          "required": ["name", "value"]
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "LayoutAction": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "name": {
-          "type": "string"
-        },
-        "value": {
-          "type": "string"
-        }
+        "icon": { "type": "string" },
+        "value": { "type": "string" },
+        "text": { "type": "string" },
+        "tooltip": { "type": "string" }
       },
-      "required": ["name", "value"]
+      "required": ["value"]
     }
   }
 }
