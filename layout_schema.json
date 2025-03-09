@@ -55,11 +55,10 @@
         },
         "status": {
           "type": "string",
-          "enum": ["active", "offline"],
-          "default": "active"
+          "enum": ["active", "offline"]
         },
         "icon": {
-          "type": "string"
+          "type": "string" 
         },
         "attributes": {
           "type": "array",
@@ -79,7 +78,8 @@
           "then": {
             "properties": {
               "status": { "not": {} },
-              "attributes": { "maxItems": 5 }
+              "attributes": { "not": {} },
+              "actions": { "not": {} }
             }
           },
           "else": {
@@ -118,7 +118,7 @@
         "label": { "type": "string" },
         "color": { "type": "string" }
       },
-      "required": ["href"],
+      "required": ["href", "icon", "label"],
       "anyOf": [
         { "required": ["icon"] },
         { "required": ["label"] }
