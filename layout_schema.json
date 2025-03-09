@@ -114,14 +114,14 @@
           "type": "string", 
           "enum": ["connect", "restart", "powerOff", "powerOn", "power", "copy", "upload", "download", "play"]
         },
-        "value": { "type": "string" },
-        "text": { "type": "string" },
-        "tooltip": { "type": "string" }
+        "href": { "type": "string" },
+        "label": { "type": "string" },
+        "color": { "type": "string" }
       },
-      "required": ["value"],
+      "required": ["href"],
       "anyOf": [
         { "required": ["icon"] },
-        { "required": ["text"] }
+        { "required": ["label"] }
       ]
     }
   }
