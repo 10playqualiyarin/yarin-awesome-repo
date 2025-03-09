@@ -110,7 +110,10 @@
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "icon": { "type": "string" },
+        "icon": { 
+          "type": "string", 
+          "enum": ["connect", "restart", "powerOff", "powerOn", "power", "copy", "upload", "download", "play"]
+        },
         "value": { "type": "string" },
         "text": { "type": "string" },
         "tooltip": { "type": "string" }
