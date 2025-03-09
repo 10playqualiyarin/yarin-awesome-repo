@@ -23,20 +23,10 @@
                 "type": "object",
                 "additionalProperties": false,
                 "properties": {
-                  "name": {
-                    "type": "string"
-                  },
+                  "name": { "type": "string" },
                   "items": {
                     "type": "array",
-                    "items": {
-                      "type": "object",
-                      "properties": {
-                        "item": {
-                          "$ref": "#/definitions/LayoutItem"
-                        }
-                      },
-                      "required": ["item"]
-                    }
+                    "items": { "$ref": "#/definitions/LayoutItem" }
                   }
                 },
                 "required": ["name", "items"]
@@ -44,20 +34,12 @@
             },
             "items": {
               "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "item": {
-                    "$ref": "#/definitions/LayoutItem"
-                  }
-                },
-                "required": ["item"]
-              }
+              "items": { "$ref": "#/definitions/LayoutItem" }
             }
           }
         }
       },
-      "required": ["kind", "description"],
+      "required": ["kind", "description", "table"],
       "title": "Layout Schema"
     },
     "LayoutItem": {
@@ -65,42 +47,38 @@
       "additionalProperties": false,
       "properties": {
         "type": {
-          "type": "string"
+          "type": "string",
+          "enum": ["output", "resource"]
         },
         "name": {
           "type": "string"
         },
         "status": {
           "type": "string",
-          "enum": ["active", "offline"]
+          "enum": ["active", "offline"],
+          "default": "active"
         },
         "icon": {
           "type": "string"
         },
         "attributes": {
           "type": "array",
-          "items": {
-            "$ref": "#/definitions/LayoutAttribute"
-          },
+          "items": { "$ref": "#/definitions/LayoutAttribute" },
           "maxItems": 5
         },
         "actions": {
           "type": "array",
-          "items": {
-            "$ref": "#/definitions/LayoutAction"
-          },
+          "items": { "$ref": "#/definitions/LayoutAction" },
           "maxItems": 3
         }
       },
       "required": ["type", "name"],
       "allOf": [
         {
-          "if": {
-            "properties": { "type": { "const": "output" } }
-          },
+          "if": { "properties": { "type": { "const": "output" } } },
           "then": {
             "properties": {
-              "status": { "not": {} }, 
+              "status": { "not": {} },
               "attributes": { "maxItems": 5 }
             }
           },
