@@ -48,7 +48,7 @@
       "properties": {
         "type": {
           "type": "string",
-          "enum": ["output", "resource"]
+          "enum": ["output", "resource", "env_ref"]
         },
         "name": {
           "type": "string"
@@ -83,8 +83,19 @@
             }
           },
           "else": {
-            "properties": {
-              "status": { "type": "string", "enum": ["active", "offline"] }
+            "if": { "properties": { "type": { "const": "env_ref" } } },
+            "then": {
+              "properties": {
+                "status": { "not": {} },
+                "attributes": { "not": {} },
+                "actions": { "not": {} },
+                "icon": { "not": {} }
+              }
+            },
+            "else": {
+              "properties": {
+                "status": { "type": "string", "enum": ["active", "offline"] }
+              }
             }
           }
         }
