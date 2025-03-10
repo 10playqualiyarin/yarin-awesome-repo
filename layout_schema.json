@@ -39,7 +39,7 @@
           }
         }
       },
-      "required": ["kind", "description", "table"],
+      "required": ["kind", "table"],
       "title": "Layout Schema"
     },
     "LayoutItem": {
