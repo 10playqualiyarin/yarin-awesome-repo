@@ -36,6 +36,18 @@
             "items": {
               "type": "array",
               "items": { "$ref": "#/definitions/LayoutItem" }
+            },
+            "quick_access": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "name": { "type": "string" },
+                  "value": { "type": "string" }
+                },
+                "required": ["name", "value"]
+              }
             }
           }
         }
