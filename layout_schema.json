@@ -24,6 +24,7 @@
                 "additionalProperties": false,
                 "properties": {
                   "name": { "type": "string" },
+                  "icon": { "$ref": "#/definitions/LayoutAction/properties/icon" },
                   "items": {
                     "type": "array",
                     "items": { "$ref": "#/definitions/LayoutItem" }
