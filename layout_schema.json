@@ -43,23 +43,30 @@
       "title": "Layout Schema"
     },
     "LayoutItem": {
+      "oneOf": [
+        { "$ref": "#/definitions/OutputItem" },
+        { "$ref": "#/definitions/ResourceItem" },
+        { "$ref": "#/definitions/EnvRefItem" }
+      ]
+    },
+    "OutputItem": {
       "type": "object",
       "additionalProperties": false,
       "properties": {
-        "type": {
-          "type": "string",
-          "enum": ["output", "resource", "env_ref"]
-        },
-        "name": {
-          "type": "string"
-        },
-        "status": {
-          "type": "string",
-          "enum": ["active", "offline"]
-        },
-        "icon": {
-          "type": "string" 
-        },
+        "type": { "const": "output" },
+        "name": { "type": "string" },
+        "icon": { "type": "string" }
+      },
+      "required": ["type", "name"]
+    },
+    "ResourceItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "resource" },
+        "name": { "type": "string" },
+        "status": { "type": "string", "enum": ["active", "offline"] },
+        "icon": { "type": "string" },
         "attributes": {
           "type": "array",
           "items": { "$ref": "#/definitions/LayoutAttribute" },
@@ -71,35 +78,17 @@
           "maxItems": 3
         }
       },
-      "required": ["type", "name"],
-      "allOf": [
-        {
-          "if": { "properties": { "type": { "const": "output" } } },
-          "then": {
-            "properties": {
-              "status": { "not": {} },
-              "attributes": { "not": {} },
-              "actions": { "not": {} }
-            }
-          },
-          "else": {
-            "if": { "properties": { "type": { "const": "env_ref" } } },
-            "then": {
-              "properties": {
-                "status": { "not": {} },
-                "attributes": { "not": {} },
-                "actions": { "not": {} },
-                "icon": { "not": {} }
-              }
-            },
-            "else": {
-              "properties": {
-                "status": { "type": "string", "enum": ["active", "offline"] }
-              }
-            }
-          }
-        }
-      ]
+      "required": ["type", "name"]
+    },
+    "EnvRefItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "env_ref" },
+        "name": { "type": "string" },
+        "icon": { "type": "string" }
+      },
+      "required": ["type", "name"]
     },
     "LayoutAttribute": {
       "oneOf": [
