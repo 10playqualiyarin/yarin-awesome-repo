@@ -68,6 +68,7 @@
       "properties": {
         "type": { "const": "output" },
         "name": { "type": "string" },
+        "display_name": { "type": "string" },
         "icon": { "type": "string" }
       },
       "required": ["type", "name"]
@@ -78,6 +79,7 @@
       "properties": {
         "type": { "const": "resource" },
         "name": { "type": "string" },
+        "display_name": { "type": "string" },
         "status": { "type": "string", "enum": ["active", "offline"] },
         "icon": { "type": "string" },
         "attributes": {
@@ -99,6 +101,7 @@
       "properties": {
         "type": { "const": "env_ref" },
         "name": { "type": "string" },
+        "display_name": { "type": "string" },
         "icon": { "type": "string" }
       },
       "required": ["type", "name"]
