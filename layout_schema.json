@@ -60,7 +60,8 @@
       "oneOf": [
         { "$ref": "#/definitions/OutputItem" },
         { "$ref": "#/definitions/ResourceItem" },
-        { "$ref": "#/definitions/EnvRefItem" }
+        { "$ref": "#/definitions/EnvRefItem" },
+        { "$ref": "#/definitions/CustomLayoutItem" }
       ]
     },
     "OutputItem": {
@@ -104,6 +105,34 @@
         "name": { "type": "string" },
         "display_name": { "type": "string" },
         "icon": { "type": "string" }
+      },
+      "required": ["type", "name"]
+    },
+    "CustomLayoutItem": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": { "const": "custom" },
+        "name": { "type": "string" },
+        "display_name": { "type": "string" },
+        "icon": { "type": "string" },
+        "data": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "name": { "type": "string" },
+              "value": { "type": "string" }
+            },
+            "required": ["name", "value"]
+          }
+        },
+        "actions": {
+          "type": "array",
+          "items": { "$ref": "#/definitions/LayoutAction" },
+          "maxItems": 3
+        }
       },
       "required": ["type", "name"]
     },
