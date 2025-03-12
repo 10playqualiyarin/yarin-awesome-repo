@@ -69,7 +69,10 @@
       "additionalProperties": false,
       "properties": {
         "type": { "const": "output" },
-        "name": { "type": "string" },
+        "name": { 
+          "type": "string",
+          "description": "The name of the referenced output. Use '*' to include all outputs or 'prefix*' to match all outputs starting with 'prefix'."
+        },
         "display_name": { "type": "string" },
         "icon": { "type": "string" }
       },
