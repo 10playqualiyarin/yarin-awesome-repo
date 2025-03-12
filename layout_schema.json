@@ -44,7 +44,8 @@
                 "additionalProperties": false,
                 "properties": {
                   "name": { "type": "string" },
-                  "value": { "type": "string" }
+                  "value": { "type": "string" },
+                  "index": { "type": "integer", "minimum": 0 }
                 },
                 "required": ["name", "value"]
               }
