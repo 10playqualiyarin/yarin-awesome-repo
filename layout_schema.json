@@ -80,7 +80,10 @@
       "additionalProperties": false,
       "properties": {
         "type": { "const": "resource" },
-        "name": { "type": "string" },
+        "name": { 
+          "type": "string",
+          "description": "The name of the referenced resource."
+        },
         "display_name": { "type": "string" },
         "status": { "type": "string", "enum": ["active", "offline"] },
         "icon": { "type": "string" },
@@ -102,7 +105,10 @@
       "additionalProperties": false,
       "properties": {
         "type": { "const": "env_ref" },
-        "name": { "type": "string" },
+        "name": { 
+          "type": "string",
+          "description": "The name of the referenced environment. Use '*' to include all environments or 'prefix*' to match all environments starting with 'prefix'."
+        },
         "display_name": { "type": "string" },
         "icon": { "type": "string" }
       },
