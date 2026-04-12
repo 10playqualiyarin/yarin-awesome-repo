@@ -1,0 +1,28 @@
+spec_version: 2-preview
+description: description text
+inputs:
+  compute-service:
+    type: agent
+outputs:
+  public_ip:
+    value: '{{.grains.MyTF.outputs.public_ip}}'
+  password:
+    value: '{{.grains.MyTF.outputs.password}}'
+grains:
+  MyTF:
+    kind: terraform
+    spec:
+      source:
+        path: terraform/create-ec2-instance
+        store: test-spec2-public
+      agent:
+        name: '{{.inputs.compute-service}}'
+      env-vars:
+        - TF_LOG: debug
+      inputs: []
+      outputs:
+        - public_ip
+        - password
+    env-labels:
+      on-success:
+        - power-off
