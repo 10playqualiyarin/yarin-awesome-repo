@@ -1,0 +1,32 @@
+spec_version: 2
+
+environment:
+  environment_name: "destroy-fail-eac"
+  state: active
+  owner_email: yarin.k@quali.com
+  spaces:
+  - YarinKeren
+
+inputs:
+  my_store:
+    type: string
+    default: yarin-awesome-repo
+
+# outputs:
+#   my_output_1:
+#     value: '{{ .grains.my_grain_1.outputs.my_output }}'
+#     quick: true
+
+
+grains:
+  tf-grain:
+    kind: 'terraform'
+    spec:
+      source:
+        store: '{{ .inputs.my_store }}'
+        path: 'terraform/destroy-fail'
+      agent:
+        name: 'eks'
+      # inputs:
+      #   - my_input: "{{ .inputs.name }}"
+  
